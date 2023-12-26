@@ -62,6 +62,7 @@ globalStyle((`${LogoWrapper} nav`), {
 export const Content = style({
     width: '600px',
     height: '200dvh',
+    marginRight: '20px'
 });
 
 export const Right = style({

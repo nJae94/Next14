@@ -1,9 +1,14 @@
 import React from 'react';
+import { Wrapper } from "@/app/(afterLogin)/home/home.css";
+import Tab from "@/app/(afterLogin)/home/_components/Tab";
+import TabProvider from "@/app/(afterLogin)/home/_components/Tab/TabProvider";
 
 const Page = () => {
     return (
-        <div>
-            홈 페이지
+        <div className={Wrapper}>
+            <TabProvider>
+                <Tab />
+            </TabProvider>
         </div>
     );
 };
