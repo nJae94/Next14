@@ -11,6 +11,7 @@ import {
     PostSection,
     PostUserImage, UploadButton
 } from "@/app/(afterLogin)/home/_components/PostForm/postForm.css";
+import Image from "next/image";
 
 export default function PostForm() {
     const imageRef = useRef<HTMLInputElement>(null);
@@ -36,7 +37,7 @@ export default function PostForm() {
         <form className={PostFormWrapper} onSubmit={onSubmit}>
             <div className={PostSection}>
                 <div className={PostUserImage}>
-                    <img src={me.image} alt={me.id} />
+                    <Image src={me.image} alt={me.id} width={40} height={40}/>
                 </div>
             </div>
             <div className={PostInputSection}>

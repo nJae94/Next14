@@ -12,8 +12,6 @@ export const PostUserImage = style({
 });
 
 globalStyle(`${PostUserImage} > img`, {
-    width: '40px',
-    height: '40px',
     borderRadius: '20px',
 });
 
