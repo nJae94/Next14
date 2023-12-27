@@ -1,6 +1,6 @@
 "use client";
 
-import React, {use, useState} from 'react';
+import React, {use} from 'react';
 import {HomeFixed, HomeTab, HomeText, TabIndicator} from "@/app/(afterLogin)/home/_components/Tab/tab.css";
 import {TabConText} from "@/app/(afterLogin)/home/_components/Tab/TabProvider";
 
