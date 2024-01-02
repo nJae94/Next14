@@ -5,7 +5,7 @@ import TabProvider from "@/app/(afterLogin)/home/_components/Tab/TabProvider";
 import PostForm from "@/app/(afterLogin)/home/_components/PostForm";
 import Post from "@/app/(afterLogin)/home/_components/Post";
 
-const Page = () => {
+const AfterLoginHome = () => {
     return (
         <div className={Wrapper}>
             <TabProvider>
@@ -17,4 +17,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default AfterLoginHome;

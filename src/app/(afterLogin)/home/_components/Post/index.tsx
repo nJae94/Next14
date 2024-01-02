@@ -50,7 +50,7 @@ export default function Post() {
                     </div>
                     <div>{target.content}</div>
                     <div>
-                        {/*<img />*/}
+                        {/*<img />*/}트K
                     </div>
                     <ActionButtons />
                 </div>
