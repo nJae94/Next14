@@ -13,7 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavMenu from "@/app/(afterLogin)/_components/NavMenu";
 
-export default async function AfterLoginLayout({children, modal}: {
+export default async function Layout(props: {
     children: ReactNode,
     modal: ReactNode
 }) {
@@ -36,7 +36,7 @@ export default async function AfterLoginLayout({children, modal}: {
             <div className={RightWrapper}>
                 <div className={Right}>
                     <main className={Content}>
-                        {children}
+                        {props.children}
                     </main>
                     <section className={RightSection}>
                         <div style={{ marginBottom: 60, width: 'inherit' }}>
@@ -57,7 +57,7 @@ export default async function AfterLoginLayout({children, modal}: {
                     </section>
                 </div>
             </div>
-            {modal}
+            {props.modal}
         </div>
     )
 }
