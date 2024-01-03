@@ -43,7 +43,6 @@ export const Logo = style({
 
 export const LogoPill = style({
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
     height: '50px',
     width: '50x',
@@ -103,7 +102,7 @@ globalStyle((`${Search} input`), {
     outline: 'none',
 });
 
-export const FollowRecommend = style({
+export const FollowRecommendWrapper = style({
   fontSize: '20px',
   fontWeight: 'bold',
   backgroundColor: 'rgb(247,249, 249)',
@@ -112,6 +111,6 @@ export const FollowRecommend = style({
   padding: '12px 16px',
 });
 
-globalStyle((`${FollowRecommend} h3`), {
+globalStyle((`${FollowRecommendWrapper} h3`), {
      paddingBottom: '12px'
 });

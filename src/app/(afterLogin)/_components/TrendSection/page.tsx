@@ -1,14 +1,10 @@
 import React from 'react';
-import {FormZone, Main, TrendWrapper} from "@/app/(afterLogin)/explore/explore.css";
-import SearchForm from '../_components/SearchForm/page';
-import Trend from '../_components/Trend/page';
+import {TrendWrapper, TrendBackground} from "@/app/(afterLogin)/explore/explore.css";
+import Trend from '../Trend/page';
 
-const Explore = () => {
+const TrendSection = () => {
     return (
-        <main className={Main}>
-            <div className={FormZone}>
-                <SearchForm />
-            </div>
+        <div className={TrendBackground}>
             <div className={TrendWrapper}>
                 <h3>나를 위한 트렌드</h3>
                 <Trend />
@@ -22,8 +18,8 @@ const Explore = () => {
                 <Trend />
                 <Trend />
             </div>
-        </main>
+        </div>
     );
 };
 
-export default Explore;
+export default TrendSection;
