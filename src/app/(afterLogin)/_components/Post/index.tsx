@@ -1,4 +1,3 @@
-import style from './post.module.css';
 import Link from "next/link";
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -12,23 +11,33 @@ import {
     Wrapper
 } from "@/app/(afterLogin)/_components/Post/post.css";
 import ActionButtons from "@/app/(afterLogin)/_components/ActionButtons";
+import PostArticle from "@/app/(afterLogin)/_components/PostArticle";
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
-export default function Post() {
+interface Props {
+    noImage?: boolean
+}
+export default function Post({noImage}: Props) {
     const target = {
+        postId: 1,
         User: {
             id: 'test',
             nickname: 'test',
             image: '/profile.png',
         },
-        content: 'Next 14',
+        content: 'next14',
         createdAt: new Date(),
-        Images: [],
+        Images: [] as any[],
+    }
+    if (Math.random() > 0.5 && !noImage) {
+        target.Images.push(
+            {imageId: 1, link: '/profile.png'},
+        )
     }
     return (
-        <article className={Wrapper}>
+        <PostArticle post={target}>
             <div className={PostSection}>
                 <div className={PostUserSection}>
                     <Link href={`/${target.User.id}`} className={PostUserImage}>
@@ -55,6 +64,6 @@ export default function Post() {
                     <ActionButtons />
                 </div>
             </div>
-        </article>
+        </PostArticle>
     )
 }
