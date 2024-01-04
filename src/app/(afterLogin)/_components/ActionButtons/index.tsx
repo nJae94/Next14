@@ -1,6 +1,6 @@
 "use client"
 
-import {CommentButton, HeartButton, RepostButton} from "@/app/(afterLogin)/home/_components/Post/post.css";
+import {CommentButton, HeartButton, RepostButton} from "@/app/(afterLogin)/_components/Post/post.css";
 import {ActionButtonsWrapper, Count} from "@/app/(afterLogin)/_components/ActionButtons/actionButtons.css";
 
 export default function ActionButtons() {

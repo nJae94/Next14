@@ -10,7 +10,7 @@ import {
     PostUserImage, PostUserName,
     PostUserSection,
     Wrapper
-} from "@/app/(afterLogin)/home/_components/Post/post.css";
+} from "@/app/(afterLogin)/_components/Post/post.css";
 import ActionButtons from "@/app/(afterLogin)/_components/ActionButtons";
 
 dayjs.locale('ko');
