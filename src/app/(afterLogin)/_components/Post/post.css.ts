@@ -96,7 +96,38 @@ export const PostBody = style({
 export const PostMeta = style({
     display: 'flex',
     flexDirection: 'row',
-})
+});
+
+export const OneImage = style({
+    maxHeight: '510px',
+    backgroundRepeat: 'no-repeat',
+});
+
+export const twoImage = style({
+    height: '272px',
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '2px',
+});
+
+globalStyle(`${twoImage} a, ${twoImage} a:first-child, ${twoImage} a:last-child `, {
+    flex: '1',
+});
+
+export const ThreeImage = style({
+    height: '272px',
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '2px',
+});
+
+export const FourImage = style({
+    height: '272px',
+    display: 'grid',
+    gridTemplateRows: '1fr 1fr',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '2px',
+});
 
 export const PostImage = style({
     marginTop: '12px',

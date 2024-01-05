@@ -12,6 +12,7 @@ import {
 } from "@/app/(afterLogin)/_components/Post/post.css";
 import ActionButtons from "@/app/(afterLogin)/_components/ActionButtons";
 import PostArticle from "@/app/(afterLogin)/_components/PostArticle";
+import PostImages from "@/app/(afterLogin)/_components/PostImages";
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
@@ -59,7 +60,7 @@ export default function Post({noImage}: Props) {
                     </div>
                     <div>{target.content}</div>
                     <div>
-                        {/*<img />*/}트K
+                        <PostImages post={target} />
                     </div>
                     <ActionButtons />
                 </div>
