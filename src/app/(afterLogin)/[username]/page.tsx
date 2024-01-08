@@ -7,7 +7,7 @@ import {
     UserName,
     UserZone,
     Wrapper
-} from "@/app/(afterLogin)/[username]/userProfile.css";
+} from "./userProfile.css";
 import BackButton from '../_components/BackButton';
 import Post from '../_components/Post';
 

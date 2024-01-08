@@ -75,3 +75,28 @@ export const FollowButton = style({
         backgroundColor: 'rgb(39,44,48)',
     }
 });
+
+export const SinglePostWrapper = style({
+    width: '600px',
+    borderColor: 'rgb(239, 243, 244)',
+    borderRightWidth: '1px',
+    borderLeftWidth: '1px',
+    borderLeftStyle: 'solid',
+    borderRightStyle: 'solid',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+});
+
+export const SinglePostHeader = style({
+    display: 'flex',
+    height: '53px',
+    alignItems: 'center',
+});
+
+export const SinglePostHeaderTitle = style({
+    fontSize: '20px',
+    fontWeight: 'bold',
+    marginLeft: '30px',
+});
+

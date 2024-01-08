@@ -1,15 +1,18 @@
 "use client";
 
-import React, {useRef, useState} from 'react';
+import  {useRef, useState} from 'react';
 import {
     ActionButton,
     FooterButtonLeft,
     FooterButtons,
     PostButtonSection,
-    PostForm, PostInputSection,
+    PostForm,
+    PostInputSection,
     PostUserImage,
     PostUserSection, UploadButton
-} from "@/app/(afterLogin)/[username]/status/[id]/_components/CommentForm/comment.css";
+} from '../../../../commentForm.css';
+
+
 
 const CommentForm = () => {
     const [content, setContent] = useState('');
