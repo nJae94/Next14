@@ -1,4 +1,4 @@
-import React from 'react';
+"use client";
 
 import dayjs from "dayjs";
 import {useRouter} from "next/navigation";
