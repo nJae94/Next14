@@ -1,88 +1,82 @@
 "use client";
-
-import React, {ChangeEventHandler, FormEventHandler, useState} from 'react';
 import {
-    CloseButton,
     Modal,
     ModalHeader,
     Wrapper,
     Body,
-    InputWrapper, InputLabel, Input, ModalFooter, ActionButton
+    InputWrapper, InputLabel, Input, ModalFooter, ActionButton, Error
 } from "@/app/(beforeLogin)/_components/signup/signupModel.css";
-import {useRouter} from "next/navigation";
+import BackButton from "@/app/(beforeLogin)/_components/BackButton";
+import {useFormState, useFormStatus } from "react-dom";
+import onSubmit from '../../_lib/signup';
+
+
 
 
 const SignupModal = () => {
-    const [id, setId] = useState('');
-    const [password, setPassword] = useState('');
-    const [nickname, setNickname] = useState('');
-    const [image, setImage] = useState('');
-    const [imageFile, setImageFile] = useState<File>();
+    const [state, formAction] = useFormState(onSubmit, { message: null });
+    const { pending } = useFormStatus();
 
-    const router = useRouter();
-    const onClickClose = () => {
-        router.back();
+    const showMessage = (message:string | null) => {
+        if (message === 'no_id') {
+            return '아이디를 입력하세요.';
+        }
+        if (message === 'no_name') {
+            return '닉네임을 입력하세요.';
+        }
+        if (message === 'no_password') {
+            return '비밀번호를 입력하세요.';
+        }
+        if (message === 'no_image') {
+            return '이미지를 업로드하세요.';
+        }
+        if (message === 'user_exists') {
+            return '이미 사용 중인 아이디입니다.';
+        }
+        return '';
     }
-
-    const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => { setId(e.target.value) };
-
-    const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e) => { setPassword(e.target.value) };
-    const onChangeNickname: ChangeEventHandler<HTMLInputElement> = (e) => { setNickname(e.target.value) };
-    const onChangeImageFile: ChangeEventHandler<HTMLInputElement> = (e) => {
-        e.target.files && setImageFile(e.target.files[0])
-    };
-
-    const onSubmit: FormEventHandler = (e) => {
-        e.preventDefault();
-        console.log('회원가입');
-    }
+    
     return (
         <div className={Wrapper}>
             <div className={Modal}>
                 <div className={ModalHeader}>
-                    <button className={CloseButton} onClick={onClickClose}>
-                        <svg width={24} viewBox="0 0 24 24" aria-hidden="true"
-                             className="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
-                            <g>
-                                <path
-                                    d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
-                            </g>
-                        </svg>
-                    </button>
+                    <BackButton />
                     <div>계정을 생성하세요.</div>
                 </div>
-                <form>
+                <form action={formAction}>
                     <div className={Body}>
                         <div className={InputWrapper}>
                             <label className={InputLabel} htmlFor="id">아이디</label>
-                            <input id="id" className={Input} type="text" placeholder=""
-                                   value={id}
-                                   onChange={onChangeId}
+                            <input
+                                id="id"
+                                name="id"
+                                className={Input} type="text"
+                                placeholder=""
+                                required
                             />
                         </div>
                         <div className={InputWrapper}>
                             <label className={InputLabel} htmlFor="name">닉네임</label>
-                            <input id="name" className={Input} type="text" placeholder=""
-                                   value={nickname}
-                                   onChange={onChangeNickname}
+                            <input id="name" name='name' className={Input} type="text" placeholder=""
+                                   required
                             />
                         </div>
                         <div className={InputWrapper}>
                             <label className={InputLabel} htmlFor="password">비밀번호</label>
-                            <input id="password" className={Input} type="password" placeholder=""
-                                   value={password}
-                                   onChange={onChangePassword}
+                            <input id="password" name="password" className={Input} type="password" placeholder=""
+                                   required
                             />
                         </div>
                         <div className={InputWrapper}>
                             <label className={InputLabel} htmlFor="image">프로필</label>
-                            <input id="image" className={Input} type="file" accept="image/*"
-                                   onChange={onChangeImageFile}
+                            <input id="image" name="image" className={Input} type="file" accept="image/*"
+                                   required
                             />
                         </div>
                     </div>
                     <div className={ModalFooter}>
-                        <button className={ActionButton} disabled>가입하기</button>
+                        <button className={ActionButton} type='submit'>가입하기</button>
+                        <div className={Error}>{showMessage(state?.message)}</div>
                     </div>
                 </form>
             </div>
