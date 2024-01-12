@@ -1,6 +1,6 @@
 "use client";
 
-import {useState} from "react";
+import {ChangeEventHandler, FormEventHandler, useState} from "react";
 import {
     ActionButton,
     Body,
@@ -10,18 +10,43 @@ import {
     ModalHeader,
     Wrapper
 } from "@/app/(beforeLogin)/_components/loginModal.css";
+import {useRouter} from "next/navigation";
+import {signIn} from "next-auth/react";
 
 export default function LoginModal() {
+    const router = useRouter();
+    const [id, setId] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+        e.preventDefault();
+        setMessage('');
 
-    const [id, setId] = useState();
-    const [password, setPassword] = useState();
-    const [message, setMessage] = useState();
-    const onSubmit = () => {};
-    const onClickClose = () => {};
+        try {
+            await signIn("credentials", {
+                username: id,
+                password,
+                redirect: false
+            });
 
-    const onChangeId = () => {};
+            router.replace('/home');
+        }
+        catch (e) {
+            setMessage('로그인 실패');
+            console.error(e);
+        }
+    };
+    const onClickClose = () => {
+        router.back();
+    };
 
-    const onChangePassword = () => {};
+    const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => {
+        setId(e.target.value);
+    };
+
+    const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e) => {
+        setPassword(e.target.value);
+    };
 
     return (
         <div className={Wrapper}>
