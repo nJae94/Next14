@@ -114,3 +114,27 @@ export const FollowRecommendWrapper = style({
 globalStyle((`${FollowRecommendWrapper} h3`), {
      paddingBottom: '12px'
 });
+
+export const PostButton = style({
+    margin: '16px 0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxShadow: 'rgba(0, 0, 0, 0.08) 0px 8px 28px',
+    backgroundColor: 'rgb(29, 155, 240)',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    border: 'none',
+    color: 'rgb(255, 255, 255)',
+    fontWeight: '700',
+    fontSize: '17px',
+
+    ':hover': {
+        backgroundColor: 'rgb(26, 140, 216)',
+    },
+});
+
+globalStyle((`${PostButton} svg`), {
+    fill: 'rgb(255, 255, 255)',
+});
