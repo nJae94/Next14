@@ -1,4 +1,4 @@
-import React from 'react';
+"use client"
 import {
     FollowButton,
     Header,
@@ -10,27 +10,24 @@ import {
 } from "./userProfile.css";
 import BackButton from '../_components/BackButton';
 import Post from '../_components/Post';
+import {useSession} from "next-auth/react";
 
-const UserProfile = () => {
-    const user = {
-        id: 'test',
-        nickname: 'test',
-        image: '/profile.png'
-    };
+const  UserProfile =  () => {
+    const { data } = useSession();
 
     return (
         <main className={Wrapper}>
             <div className={Header}>
                 <BackButton />
-                <h3 className={HeaderTitle}>{user.nickname}</h3>
+                <h3 className={HeaderTitle}>{data?.user?.name ?? ''}</h3>
             </div>
             <div className={UserZone}>
                 <div className={UserImage}>
-                    <img src={user.image} alt={user.id}/>
+                    <img src={data?.user?.image ?? ''} alt={data?.user?.email ?? ''}/>
                 </div>
                 <div className={UserName}>
-                    <div>{user.nickname}</div>
-                    <div>@{user.id}</div>
+                    <div>{data?.user?.name}</div>
+                    <div>@{data?.user?.email}</div>
                 </div>
                 <button className={FollowButton}>팔로우</button>
             </div>

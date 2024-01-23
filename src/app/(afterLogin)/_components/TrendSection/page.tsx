@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import {TrendWrapper, TrendBackground} from "@/app/(afterLogin)/explore/explore.css";
 import Trend from '../Trend/page';
 import {usePathname} from "next/navigation";
