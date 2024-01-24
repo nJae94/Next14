@@ -12,9 +12,12 @@ import {
 } from "@/app/(beforeLogin)/_components/loginModal.css";
 import {useRouter} from "next/navigation";
 import {signIn} from "next-auth/react";
+import {useSetRecoilState} from "recoil";
+import LoginState from "@/app/atom/loginState";
 
 export default function LoginModal() {
     const router = useRouter();
+    const setShowLoginModal = useSetRecoilState(LoginState);
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -30,6 +33,8 @@ export default function LoginModal() {
             });
 
             router.replace('/home');
+
+            setShowLoginModal(false);
         }
         catch (e) {
             setMessage('로그인 실패');

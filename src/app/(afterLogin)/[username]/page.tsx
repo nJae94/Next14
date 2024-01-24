@@ -11,9 +11,17 @@ import {
 import BackButton from '../_components/BackButton';
 import Post from '../_components/Post';
 import {useSession} from "next-auth/react";
+import {useRecoilState} from "recoil";
+import LoginState from "@/app/atom/loginState";
 
 const  UserProfile =  () => {
     const { data } = useSession();
+    const [isShowLoginModal, setIsShowLoginModal] = useRecoilState(LoginState)
+    const onClickFollow = () => {
+        if(!data && !isShowLoginModal) {
+            setIsShowLoginModal(true);
+        }
+    }
 
     return (
         <main className={Wrapper}>
@@ -29,7 +37,7 @@ const  UserProfile =  () => {
                     <div>{data?.user?.name}</div>
                     <div>@{data?.user?.email}</div>
                 </div>
-                <button className={FollowButton}>팔로우</button>
+                <button className={FollowButton} onClick={onClickFollow}>팔로우</button>
             </div>
             <div>
                 <Post />
