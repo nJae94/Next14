@@ -4,6 +4,7 @@ import './globals.css'
 import {MSWComponent} from "@/app/_component/MSWComponent";
 import AuthSession from "@/app/_component/AuthSeesion";
 import RecoilWrapper from "@/app/_component/recoilWrapper";
+import ReactQueryProvider from "@/app/_component/ReactQueryProvider";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,9 +23,11 @@ export default function RootLayout({
         <body className={inter.className}>
         <MSWComponent/>
         <RecoilWrapper>
-            <AuthSession>
-                {children}
-            </AuthSession>
+            <ReactQueryProvider>
+                <AuthSession>
+                    {children}
+                </AuthSession>
+            </ReactQueryProvider>
         </RecoilWrapper>
         </body>
         </html>
