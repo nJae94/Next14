@@ -13,54 +13,41 @@ import {
 import ActionButtons from "@/app/(afterLogin)/_components/ActionButtons";
 import PostArticle from "@/app/(afterLogin)/_components/PostArticle";
 import PostImages from "@/app/(afterLogin)/_components/PostImages";
+import {Post} from "@/app/Model/Post";
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
 interface Props {
     noImage?: boolean
+    post: Post;
 }
-export default function Post({noImage}: Props) {
-    const target = {
-        postId: 1,
-        User: {
-            id: 'test',
-            nickname: 'test',
-            image: '/profile.png',
-        },
-        content: 'next14',
-        createdAt: new Date(),
-        Images: [] as any[],
-    }
-    if (Math.random() > 0.5 && !noImage) {
-        target.Images.push(
-            {imageId: 1, link: '/profile.png'},
-        )
-    }
+export default function Post({noImage, post}: Props) {
+
     return (
-        <PostArticle post={target}>
+        <PostArticle post={post}>
             <div className={PostSection}>
                 <div className={PostUserSection}>
-                    <Link href={`/${target.User.id}`} className={PostUserImage}>
-                        <img src={target.User.image} alt={target.User.nickname}/>
+                    <Link href={`/${post.User.id}`} className={PostUserImage}>
+                        <img src={post.User.image} alt={post.User.nickname}/>
                         <div className={PostShade} />
                     </Link>
                 </div>
                 <div className={PostBody}>
                     <div className={PostMeta}>
-                        <Link href={`/${target.User.id}`}>
-                            <span className={PostUserName}>{target.User.nickname}</span>
+                        <Link href={`/${post.User.id}`}>
+                            <span className={PostUserName}>{post.User.nickname}</span>
                             &nbsp;
-                            <span className={PostUserName}>@{target.User.id}</span>
+                            <span className={PostUserName}>@{post.User.id}</span>
                             &nbsp;
                             ·
                             &nbsp;
                         </Link>
-                        <span className={PostDate}>{dayjs(target.createdAt).fromNow(true)}</span>
+                        <span className={PostDate}>{dayjs(post.createdAt).fromNow(true)}</span>
                     </div>
-                    <div>{target.content}</div>
+                    <div>{post.content}</div>
                     <div>
-                        <PostImages post={target} />
+                        <PostImages post={post} />
                     </div>
                     <ActionButtons />
                 </div>

@@ -1,21 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 import {FourImage, OneImage, ThreeImage, twoImage} from "@/app/(afterLogin)/_components/Post/post.css";
+import {Post} from "@/app/Model/Post";
 
 
 interface Props {
-    post: {
-        postId: number;
-        content: string,
-        User: {
-            id: string,
-            nickname: string,
-            image: string,
-        },
-        createdAt: Date,
-        Images: any[],
-    }
-
+    post: Post
 }
 
 const PostImages = ({ post } : Props) => {
@@ -28,7 +18,7 @@ const PostImages = ({ post } : Props) => {
                 className={OneImage}
                 style={{ backgroundImage: `url(${post.Images[0]?.link})`, backgroundSize: 'contain'}}
             >
-                <img src={post.Images[0]?.link} alt="" />
+                <img src={post.Images[0]?.link} style={{width: '300px'}} alt="" />
             </Link>
         )
     }

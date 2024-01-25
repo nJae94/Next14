@@ -3505,6 +3505,18 @@ restore-cursor@^3.1.0:
     onetime "^5.1.0"
     signal-exit "^3.0.2"
 
+return-fetch-json@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/return-fetch-json/-/return-fetch-json-0.4.5.tgz#e3d8fe4a2c8c66b92e53651a615f5749b6fefdcd"
+  integrity sha512-hMApU32dSsXq0DfcV6eaC3Fz6AAq7PwVi464950cy5wgj7dW1+MEuR7QyLrrKqSGPMZDM3L9B23TjIVS/9JeDg==
+  dependencies:
+    return-fetch "^0.4.5"
+
+return-fetch@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/return-fetch/-/return-fetch-0.4.5.tgz#f243c34383407687d3693dc5c9582b8fbb0d0618"
+  integrity sha512-B4dEbp7cjVuXE0EshS4skHfCdGKYA2U1XDGRCa8EhE6P+R+tAmMtfVskeOI4CAyryD3HNz1esvFGKxOwq4VOhw==
+
 reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/reusify/-/reusify-1.0.4.tgz"
