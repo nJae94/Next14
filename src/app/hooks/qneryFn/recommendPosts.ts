@@ -14,8 +14,9 @@ interface Response {
 const useRecommendPosts = ({pageParam = 0}: Props) : Response => {
     const  { data: recommendPosts } = useQuery({
         queryKey: POST_QUERY_KEY.RECOMMENDS,
-        queryFn: () => getPostRecommends({pageParam}),
-
+        queryFn: () => getPostRecommends({pageParam},
+        ),
+        staleTime: 1000 * 60 * 2 // 2분
     });
 
     if(!recommendPosts) {

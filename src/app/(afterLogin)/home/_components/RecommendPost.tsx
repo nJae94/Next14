@@ -5,7 +5,6 @@ import Post from "@/app/(afterLogin)/_components/Post";
 const RecommendPost = ()=> {
     const  { recommendPosts } = useRecommendPosts({pageParam: 0});
 
-    console.log(recommendPosts);
     return (
         <div>
             {

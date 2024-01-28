@@ -14,7 +14,6 @@ const Tab = () => {
     const onClickFol = () => {
         setTab('fol');
     }
-
     return (
         <div className={HomeFixed}>
             <div className={HomeText}>홈</div>

@@ -1,10 +1,11 @@
 "use client";
 
 import React, {createContext, useState} from "react";
+import {TabType} from "@/app/constants/Tab";
 
 export const TabConText = createContext({
     tab: 'rec',
-    setTab: (value: 'rec' | 'fol') => {}
+    setTab: (value: TabType) => {}
 });
 
 interface Props {
