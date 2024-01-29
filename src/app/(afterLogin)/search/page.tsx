@@ -3,7 +3,7 @@ import {ButtonZone, FormZone, List, SearchTop, SearchZone, Wrapper} from "@/app/
 import BackButton from "@/app/(afterLogin)/_components/BackButton";
 import SearchForm from "@/app/(afterLogin)/_components/SearchForm";
 import Tab from "@/app/(afterLogin)/search/_components/Tab";
-import Post from '../_components/Post';
+import SearchResult from "@/app/(afterLogin)/search/_components/SearchResult";
 
 
 interface Props {
@@ -24,18 +24,7 @@ const Search = ({ searchParams }: Props) => {
                 <Tab />
             </div>
             <div className={List}>
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                {/*<SearchResult searchParams={searchParams} />*/}
+                <SearchResult searchParams={searchParams} />
             </div>
         </main>
     );

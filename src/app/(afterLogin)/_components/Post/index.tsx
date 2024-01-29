@@ -19,10 +19,9 @@ dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
 interface Props {
-    noImage?: boolean
     post: Post;
 }
-export default function Post({noImage, post}: Props) {
+export default function Post({ post}: Props) {
 
     return (
         <PostArticle post={post}>

@@ -1,4 +1,4 @@
-import {style} from "@vanilla-extract/css";
+import {keyframes, style} from "@vanilla-extract/css";
 
 export const Wrapper = style({
     width: '600px',
@@ -10,4 +10,13 @@ export const Wrapper = style({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',
+});
+
+const rotating = keyframes({
+    '0%': { transform: 'rotate(0deg)' },
+    '100%': { transform: 'rotate(360deg)' }
+});
+
+export const Loading = style({
+    animation: `${rotating} 2s linear infinite`,
 });

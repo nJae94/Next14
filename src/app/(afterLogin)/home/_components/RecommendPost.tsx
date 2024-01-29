@@ -12,7 +12,7 @@ const RecommendPost = ()=> {
                     return (
                        <Post post={post}
                              key={post.postId}
-                             noImage={post.Images.length > 0} />
+                              />
                     )
                 })
             }
