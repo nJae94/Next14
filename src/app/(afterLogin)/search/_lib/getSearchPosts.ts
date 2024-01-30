@@ -1,9 +1,9 @@
 import {Post} from "@/app/Model/Post";
-import {QueryFunction} from "@tanstack/query-core";
 import {fetchExtended} from "@/app/fetch";
+import {SearchParams} from "@/app/Model/SearchParams";
 
 export const getSearchPosts
-    = async ({ searchParams }: {  searchParams: {q: string, pf?: string, f?: string}}) => {
+    = async (searchParams : SearchParams ) => {
 
     const res = await fetchExtended<Post[]>(`http://localhost:9090/api/search/${searchParams.q}?${searchParams.toString()}`, {
         next: {

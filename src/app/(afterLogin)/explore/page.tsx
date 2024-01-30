@@ -1,7 +1,7 @@
 import React from 'react';
 import {FormZone, Main, TrendWrapper} from "@/app/(afterLogin)/explore/explore.css";
-import SearchForm from '../_components/SearchForm/page';
 import Trend from '../_components/Trend/page';
+import SearchForm from "@/app/(afterLogin)/_components/SearchForm";
 
 const Explore = () => {
     return (
