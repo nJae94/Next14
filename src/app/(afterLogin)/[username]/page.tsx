@@ -1,52 +1,33 @@
-"use client"
 import {
-    FollowButton,
-    Header,
-    HeaderTitle,
-    UserImage,
-    UserName,
-    UserZone,
     Wrapper
 } from "./userProfile.css";
-import BackButton from '../_components/BackButton';
-import Post from '../_components/Post';
-import {useSession} from "next-auth/react";
-import {useRecoilState} from "recoil";
-import LoginState from "@/app/atom/loginState";
+import UserInfo from "@/app/(afterLogin)/[username]/_components/UserInfo";
+import {dehydrate, QueryClient} from "@tanstack/query-core";
+import {HydrationBoundary} from "@tanstack/react-query";
+import getUser from "@/app/(afterLogin)/[username]/_lib/getUser";
+import getUserPosts from "@/app/hooks/qneryFn/getUserPosts";
+import UserPosts from "@/app/(afterLogin)/[username]/_components/UserPost";
 
-const  UserProfile =  () => {
-    const { data } = useSession();
-    const [isShowLoginModal, setIsShowLoginModal] = useRecoilState(LoginState)
-    const onClickFollow = () => {
-        if(!data && !isShowLoginModal) {
-            setIsShowLoginModal(true);
-        }
-    }
+interface Props {
+    params: { username: string },
+
+}
+const UserProfile = async ({params}: Props) => {
+    const {username} = params;
+    const queryClient = new QueryClient();
+    await queryClient.prefetchQuery(
+        {queryKey: ['users', username], queryFn:()=> getUser({username})});
+    await queryClient.prefetchQuery({queryKey: ['posts', 'users', username], queryFn: ()=> getUserPosts(username)});
+    const dehydratedState = dehydrate(queryClient);
 
     return (
         <main className={Wrapper}>
-            <div className={Header}>
-                <BackButton />
-                <h3 className={HeaderTitle}>{data?.user?.name ?? ''}</h3>
-            </div>
-            <div className={UserZone}>
-                <div className={UserImage}>
-                    <img src={data?.user?.image ?? ''} alt={data?.user?.email ?? ''}/>
+            <HydrationBoundary state={dehydratedState}>
+                <UserInfo username={username} />
+                <div>
+                    <UserPosts username={username} />
                 </div>
-                <div className={UserName}>
-                    <div>{data?.user?.name}</div>
-                    <div>@{data?.user?.email}</div>
-                </div>
-                <button className={FollowButton} onClick={onClickFollow}>팔로우</button>
-            </div>
-            <div>
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-            </div>
+            </HydrationBoundary>
         </main>
     );
 };
