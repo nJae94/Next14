@@ -9,7 +9,6 @@ const getUserPosts = async (username: string) => {
         cache: 'no-store',
     });
 
-
     if(!res.ok) {
         throw new Error('Failed to fetch data')
     }

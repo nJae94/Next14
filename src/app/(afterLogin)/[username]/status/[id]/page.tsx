@@ -9,7 +9,6 @@ import {
 } from "@/app/(afterLogin)/[username]/userProfile.css";
 import CommentForm from './_components/CommentForm';
 
-
 const SinglePost = () => {
     return (
         <div className={SinglePostWrapper} >
@@ -17,18 +16,9 @@ const SinglePost = () => {
                 <BackButton/>
                 <h3>게시하기</h3>
             </div>
-            <Post />
             <CommentForm />
             <div className={SinglePostHeaderTitle}>
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
+
             </div>
         </div>
     );
